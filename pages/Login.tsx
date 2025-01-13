@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut, User } from "firebase/auth";
 import React, { useEffect, useState } from "react";
 import styles from './style.module.css'; // Importation du module CSS
 
@@ -20,7 +20,7 @@ const auth = getAuth(app);
 const Login: React.FC = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [user, setUser] = useState<any>(null);
+  const [user, setUser] = useState<User | null>(null);  // Spécification du type User de Firebase
   const [error, setError] = useState<string | null>(null);
 
   // Vérifie si un utilisateur est connecté dès le début
