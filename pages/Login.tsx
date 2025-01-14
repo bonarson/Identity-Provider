@@ -7,7 +7,6 @@ const Login: React.FC = () => {
   const [user, setUser] = useState<{ email: string; displayName?: string } | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  // Fonction de connexion avec email et mot de passe
   const handleEmailPasswordSignIn = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -23,12 +22,10 @@ const Login: React.FC = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Connexion réussie
         setUser({ email: data.user.email, displayName: data.user.displayName });
         setError(null);
         console.log('Utilisateur connecté :', data.user);
       } else {
-        // Erreur côté serveur
         setError(data.error || 'Erreur lors de la connexion');
       }
     } catch (error) {
@@ -37,7 +34,6 @@ const Login: React.FC = () => {
     }
   };
 
-  // Déconnexion
   const handleLogout = () => {
     setUser(null);
     console.log("Utilisateur déconnecté");
@@ -67,7 +63,7 @@ const Login: React.FC = () => {
         ) : (
           <>
             <h1 className={styles.h1}>Casual Chat</h1>
-            <h3 className={styles.h3}>Profitez d'une discussion détendue</h3>
+            <h3 className={styles.h3}>Profitez d&apos;une discussion détendue</h3>
 
             {/* Formulaire de connexion */}
             <form onSubmit={handleEmailPasswordSignIn}>
